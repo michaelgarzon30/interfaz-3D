@@ -4,42 +4,152 @@
     <title>Interfaz 3D michael garzon</title>
     <link rel="stylesheet" href=".css">
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
-  </head>
-
 </head>
 <body>
     <a-scene>
-
-        <a-assets>
-            <img id="piedra" src="https://michaelgarzon30.github.io/interfaz-3D/piedra.png">
-            <img id="madera" src="https://michaelgarzon30.github.io/interfaz-3D/madera.png">
-            <a-asset-item id="tree" src="https://michaelgarzon30.github.io/interfaz-3D/scene.gltf"></a-asset-item>
-        </a-assets>
-
-        <a-box src="madera" position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-
-
-        <a-sphere position="0 1.25 -5" radius="1.25" color="#FFFFF"></a-sphere>
-        <a-sphere position="0 3 -5" radius="0.85" color="#FFFFF"></a-sphere>
-        <a-sphere position="0 4 -5" radius="0.5" color="#FFFFF"></a-sphere>
-        <a-sphere position="0 3 -4.2" radius="0.1" color="black"></a-sphere>
-
-        <a-cylinder src="piedra" position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-        
-        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-
-        
-        <a-entity gltf-model="#tree" scale="0.1 0.1 0.1" position=" 1.5 3 -5" rotation="0 0 90"></a-entity>
-        
-        <a-sky color="#ECECEC"></a-sky>
-      </a-scene>
-      <a-entity id="rig" position="25 10 0">
-        <a-camera id="camera">
-            <a-cursor></a-cursor>
-        </a-camera>
+      
+      <a-entity position="0 1.6 0" camera="" look-controls="pointerLockEnabled: true" wasd-controls="" restrict-vertical-rotation="" rotation="">
+        <a-cursor color="black"></a-cursor>
+        <a-entity id="song-title" position="0 -0.6 -1.5" text="value: ; color: black; align: center;" visible="false"></a-entity>
       </a-entity>
 
+      <a-assets>
+        <img id="piedra" src="https://michaelgarzon30.github.io/interfaz-3D/piedra.png">
+        <img id="madera" src="https://michaelgarzon30.github.io/interfaz-3D/madera.png">
+        <a-asset-item id="mesa" src="https://michaelgarzon30.github.io/interfaz-3D/victorian_console_table/scene.gltf"></a-asset-item>
+        <a-asset-item id="tocadisco" src="https://michaelgarzon30.github.io/interfaz-3D/vinyl_player_pioneer/scene.gltf"></a-asset-item>
+        <a-asset-item id="disco" src="https://michaelgarzon30.github.io/interfaz-3D/12_vinyl_record/scene.gltf"></a-asset-item>
+        <!-- Audio files -->
+        <audio id="song1" src="https://michaelgarzon30.github.io/interfaz-3D/musiccyberpunk.mp3"></audio>
+        <audio id="song2" src="https://michaelgarzon30.github.io/interfaz-3D/gurenge.mp3"></audio>
+        <audio id="song3" src="https://michaelgarzon30.github.io/interfaz-3D/red swan.mp3"></audio>
+        <audio id="song4" src="https://michaelgarzon30.github.io/interfaz-3D/bokurano.mp3"></audio>
+        <!-- Sky textures -->
+        <img id="sky1" src="https://michaelgarzon30.github.io/interfaz-3D/fondo_cyber.png">
+        <img id="sky2" src="https://michaelgarzon30.github.io/interfaz-3D/kimetsu.PNG" >
+        <img id="sky3" src="https://michaelgarzon30.github.io/interfaz-3D/snk.PNG">
+        <img id="sky4" src="https://michaelgarzon30.github.io/interfaz-3D/mya.PNG">
+        <img id="default-sky" src="https://michaelgarzon30.github.io/interfaz-3D/fondo.png" >
+      </a-assets>
+      
+      <a-plane color="black" position="0 -0.2 10" rotation="-90 0 0" width="40" height="40" material="opacity: 0.5; transparent: true; color: #ffffff; side: double; roughness: 0.1; metalness: 0.9;"></a-plane>
+      <a-entity id="tocadisco-entity" gltf-model="#tocadisco" scale="1 1 1" position="0 0.7 0" rotation="0 0 0"></a-entity>
+      <a-entity gltf-model="#instrumentos" scale="1 1 1" position="0 0 -3" rotation="0 0 0"></a-entity>
+      <a-entity gltf-model="#mesa" scale="15 12 15" position="0 0 0" rotation="0 0 0"></a-entity>
+      
+      <!-- Interactive Records with Titles -->
+      <a-entity position="-4 2 0">
+        <a-entity src="#disco1" gltf-model="#disco" scale="2 2 2" rotation="45 0 0" class="interactive" data-song="#song1" data-title="Song 1 Title" data-sky="#sky1"></a-entity>
+        <a-text value="Song 1 Title" align="center" position="0 4 -1.5" color="black"></a-text>
+      </a-entity>
+      <a-entity position="-2 2 0">
+        <a-entity src="#disco1" gltf-model="#disco" scale="2 2 2" rotation="45 0 0" class="interactive" data-song="#song2" data-title="Song 2 Title" data-sky="#sky2"></a-entity>
+        <a-text value="Song 2 Title" align="center" position="0 4 -1.5" color="black"></a-text>
+      </a-entity>
+      <a-entity position="0 2 0">
+        <a-entity src="#disco1" gltf-model="#disco" scale="2 2 2" rotation="45 0 0" class="interactive" data-song="#song3" data-title="Song 3 Title" data-sky="#sky3"></a-entity>
+        <a-text value="Song 3 Title" align="center" position="0 4 -1.5" color="black"></a-text>
+      </a-entity>
+      <a-entity position="2 2 0">
+        <a-entity src="#disco1" gltf-model="#disco" scale="2 2 2" rotation="45 0 0" class="interactive" data-song="#song4" data-title="Song 4 Title" data-sky="#sky4"></a-entity>
+        <a-text value="Song 4 Title" align="center" position="0 4 -1.5" color="black"></a-text>
+      </a-entity>
+      
+      <a-sky id="sky" src="#default-sky"  ></a-sky>
+
+      <!-- Controls Menu -->
+      <a-entity id="controls-menu" position="0 1 -2">
+        <a-plane color="white" width="2" height="1">
+          <a-text value="Controles:\n- Click izquierdo: Reproducir canción\n- Click derecho: Detener canción" color="black" align="center" position="0 0 0.1"></a-text>
+        </a-plane>
+      </a-entity>
+    </a-scene>
+
+    <script>
+      AFRAME.registerComponent('play-song-on-click', {
+        init: function () {
+          var el = this.el;
+          var songId = el.getAttribute('data-song');
+          var song = document.querySelector(songId);
+          var songTitle = el.getAttribute('data-title');
+          var titleEntity = document.querySelector('#song-title');
+          var tocadiscoEntity = document.querySelector('#tocadisco-entity');
+          var updateTitle;
+
+          el.addEventListener('click', function () {
+            // Pause all other songs
+            var allSongs = document.querySelectorAll('audio');
+            allSongs.forEach(function(audio) {
+              audio.pause();
+              audio.currentTime = 0;
+            });
+
+            // Set the song title and make it visible
+            titleEntity.setAttribute('text', 'value', `${songTitle}\n0 seconds`);
+            titleEntity.setAttribute('visible', 'true');
+
+            // Play the selected song
+            song.play();
+
+            // Change the sky texture
+            var skyTexture = el.getAttribute('data-sky');
+            sky.setAttribute('src', skyTexture);
+
+            // Update the volume based on distance to the tocadisco
+            var updateVolume = function () {
+              var camera = document.querySelector('[camera]');
+              var cameraPosition = camera.object3D.position;
+              var tocadiscoPosition = tocadiscoEntity.object3D.position;
+              var distance = cameraPosition.distanceTo(tocadiscoPosition);
+              var volume = Math.max(1 - (distance / 40), 0); // Adjust volume based on distance
+              song.volume = volume;
+              if (!song.paused) {
+                requestAnimationFrame(updateVolume);
+              }
+            };
+            updateVolume();
+
+            // Update the song title with seconds elapsed
+            var startTime = Date.now();
+            updateTitle = function () {
+              var secondsElapsed = Math.floor((Date.now() - startTime) / 1000);
+              titleEntity.setAttribute('text', 'value', `${songTitle}\n${secondsElapsed} seconds`);
+              if (!song.paused) {
+                requestAnimationFrame(updateTitle);
+              }
+            };
+            updateTitle();
+          });
+        }
+      });
+
+      // Stop song on right-click
+      window.addEventListener('contextmenu', function (event) {
+        event.preventDefault();
+        var allSongs = document.querySelectorAll('audio');
+        allSongs.forEach(function(audio) {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+        // Hide the song title and revert to default sky
+        var titleEntity = document.querySelector('#song-title');
+        titleEntity.setAttribute('visible', 'false');
+        var sky = document.querySelector('#sky');
+        sky.setAttribute('src', '#default-sky');
+      });
+
+      document.querySelectorAll('.interactive').forEach(function(el) {
+        el.setAttribute('play-song-on-click', '');
+      });
+
+      // Hide controls menu after 10 seconds
+      setTimeout(function () {
+        var controlsMenu = document.querySelector('#controls-menu');
+        controlsMenu.parentNode.removeChild(controlsMenu);
+      }, 10000);
+    </script>
 </body>
 </html>
+
 
 
